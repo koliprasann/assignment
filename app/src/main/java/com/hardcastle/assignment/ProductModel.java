@@ -1,8 +1,11 @@
 package com.hardcastle.assignment;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
-public class ProductModel {
+public class ProductModel implements Parcelable {
 
     String id,
             product_id,
@@ -17,11 +20,12 @@ public class ProductModel {
             //linked_products,
             combo_products;
     //ArrayList<ProductOptionModel> product_options;
+    ArrayList<LinkedProductModel> linked_products;
   Boolean  special,
     special2,
     tax;
 
-    public ProductModel(String id, String product_id, String image, String title, String description, String price, String price2, Boolean special, Boolean special2, Boolean tax, String minimum, String rating, String href/*, String linked_products*/, String combo_products/*, ArrayList<ProductOptionModel> product_options*/) {
+    public ProductModel(String id, String product_id, String image, String title, String description, String price, String price2, Boolean special, Boolean special2, Boolean tax, String minimum, String rating, String href, ArrayList<LinkedProductModel> linked_products, String combo_products/*, ArrayList<ProductOptionModel> product_options*/) {
         this.id = id;
         this.product_id = product_id;
         this.image = image;
@@ -35,10 +39,65 @@ public class ProductModel {
         this.minimum = minimum;
         this.rating = rating;
         this.href = href;
-       // this.linked_products = linked_products;
+        this.linked_products = linked_products;
         this.combo_products = combo_products;
        // this.product_options = product_options;
     }
+
+    protected ProductModel(Parcel in) {
+        id = in.readString();
+        product_id = in.readString();
+        image = in.readString();
+        title = in.readString();
+        description = in.readString();
+        price = in.readString();
+        price2 = in.readString();
+        minimum = in.readString();
+        rating = in.readString();
+        href = in.readString();
+        combo_products = in.readString();
+        byte tmpSpecial = in.readByte();
+        special = tmpSpecial == 0 ? null : tmpSpecial == 1;
+        byte tmpSpecial2 = in.readByte();
+        special2 = tmpSpecial2 == 0 ? null : tmpSpecial2 == 1;
+        byte tmpTax = in.readByte();
+        tax = tmpTax == 0 ? null : tmpTax == 1;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(product_id);
+        dest.writeString(image);
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeString(price);
+        dest.writeString(price2);
+        dest.writeString(minimum);
+        dest.writeString(rating);
+        dest.writeString(href);
+        dest.writeString(combo_products);
+        dest.writeByte((byte) (special == null ? 0 : special ? 1 : 2));
+        dest.writeByte((byte) (special2 == null ? 0 : special2 ? 1 : 2));
+        dest.writeByte((byte) (tax == null ? 0 : tax ? 1 : 2));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<ProductModel> CREATOR = new Creator<ProductModel>() {
+        @Override
+        public ProductModel createFromParcel(Parcel in) {
+            return new ProductModel(in);
+        }
+
+        @Override
+        public ProductModel[] newArray(int size) {
+            return new ProductModel[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -144,13 +203,13 @@ public class ProductModel {
         this.href = href;
     }
 
-   /* public String getLinked_products() {
+    public ArrayList<LinkedProductModel> getLinked_products() {
         return linked_products;
     }
 
-    public void setLinked_products(String linked_products) {
+    public void setLinked_products(ArrayList<LinkedProductModel> linked_products) {
         this.linked_products = linked_products;
-    }*/
+    }
 
     public String getCombo_products() {
         return combo_products;

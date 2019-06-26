@@ -6,115 +6,337 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-<ScrollView
-    android:background="@android:color/darker_gray"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <RelativeLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:background="@mipmap/ic_launcher"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        />
+        android:layout_height="match_parent"
+        android:background="@android:color/darker_gray">
 
         <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:id="@+id/catTitle"
-            android:background="@android:color/white"
-            android:layout_below="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-            android:text="Delivery within 2-3 days"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-            <TextView
-                android:layout_alignParentEnd="true"
-                android:text="View All"
-                android:layout_width="wrap_content"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+
+            <View
+                android:layout_below="@+id/pager"
+                android:id="@+id/greenView"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@android:color/holo_green_light" />
+
+            <LinearLayout
+                android:background="@android:color/white"
+                android:id="@+id/featuresLL"
+                android:layout_below="@+id/greenView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
+                android:weightSum="4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Free shoping above 5BHD" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="3 -4 hours delivery" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Safe Payment" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Customer support service" />
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/catTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/featuresLL"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery within 2-3 days"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:text="View All"
+                    android:textColor="#BD6767"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <GridView
+                android:id="@+id/basicGrid"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:layout_below="@+id/catTitle"
+                android:background="@android:color/white"
+                android:numColumns="3" />
+
+
+            <RelativeLayout
+                android:id="@+id/PromoTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/basicGrid"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Promotion"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:text="View All"
+                    android:textColor="#BD6767"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/promoRv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/PromoTitle"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:reverseLayout="true">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <RelativeLayout
+                android:id="@+id/GroceryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/promoRv"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grocery"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:text="View All"
+                    android:textColor="#BD6767"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/GroceryRv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/GroceryTitle"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:reverseLayout="true">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <RelativeLayout
+                android:id="@+id/HnBTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/GroceryRv"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Health and Beauty "
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:text="View All"
+                    android:textColor="#BD6767"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/HnBRv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/HnBTitle"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:reverseLayout="true">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:id="@+id/BabyTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/HnBRv"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="baby"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:text="View All"
+                    android:textColor="#BD6767"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/BabyRv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/BabyTitle"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:reverseLayout="true">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:id="@+id/HouseholdTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/BabyRv"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Household Supplies"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:text="View All"
+                    android:textColor="#BD6767"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/HouseholdRv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/HouseholdTitle"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:reverseLayout="true">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:id="@+id/StationeryTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/HouseholdRv"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Stationery"
+                    android:textColor="@android:color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:text="View All"
+                    android:textColor="#BD6767"
+                    android:textSize="17dp" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/StationeryRv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/StationeryTitle"
+                android:divider="@null"
+                android:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:reverseLayout="true">
+
+            </android.support.v7.widget.RecyclerView>
+
 
         </RelativeLayout>
-    <GridView
-        android:background="@android:color/white"
-        android:layout_below="@+id/catTitle"
-        android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:id="@+id/basicGrid"
-        android:numColumns="3" />
-
-
-        <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:id="@+id/PromoTitle"
-            android:background="@android:color/white"
-            android:layout_below="@+id/basicGrid"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:text="Promotion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_alignParentEnd="true"
-                android:text="View All"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
-
-        </RelativeLayout>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/promoRv"
-            android:layout_below="@+id/PromoTitle"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:divider="@null"
-            android:orientation="horizontal"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            app:reverseLayout="true">
-
-        </android.support.v7.widget.RecyclerView>
-
-
-        <RelativeLayout
-            android:layout_marginTop="10dp"
-            android:id="@+id/GroceryTitle"
-            android:background="@android:color/white"
-            android:layout_below="@+id/promoRv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:text="Promotion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_alignParentEnd="true"
-                android:text="View All"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true" />
-
-        </RelativeLayout>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/GroceryRv"
-            android:layout_below="@+id/GroceryTitle"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:divider="@null"
-            android:orientation="horizontal"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            app:reverseLayout="true">
-
-        </android.support.v7.widget.RecyclerView>
-
-    </RelativeLayout>
-</ScrollView>
+    </ScrollView>
 
 </LinearLayout>
